@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>replace function</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+            回调函数的参数个数不定，但是，有规律。         
+            第一个    整个正则匹配到的字符串
+            最后一个 目标字符串
+            倒数第二个 数字类型，匹配到的字符串在目标字符串的位置。
+            其余的则是 分组内容， 全是字符串。
+        */
+        var temp = "neo is stupid";
+        var count = 1;
+        var b = temp.replace(/\b(?=\s)|\b$/g, function( ) {
+            return count++;
+        });
+        console.log( b );
+    </script>
+</body>
+</html>

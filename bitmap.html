@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>something about bitmap</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /*
+        题目：有一组数字，从1到n（假设n=10000），从中任意删除了3个数，顺序也被打乱，剩余数字放在一个n-3的数组里，请找出丢失的数字，要求算法比较快。
+
+        找答案的过程中，得知还有 bitmap 这种算法，特记录之。
+    */
+        var n = 10000, 
+            oddArr = [],
+            delArr = [],
+            newArr = Array( n + 1 ),
+            lostArr = [],
+            i = 1;
+
+        for ( i; i <= n; i ++ ) {
+            oddArr.push(i);
+        }
+
+        delArr = oddArr.concat();
+        for ( i = 0; i < 3; i++ ) {
+            delArr.splice( Math.floor(Math.random() * (oddArr.length-1) + 1), 1 );
+        }
+
+        for ( i = 0; i < delArr.length; i ++ ) {
+            newArr[delArr[i]] = 1;
+        }
+
+        for ( var j = 0; j < newArr.length; j ++ ) {
+            if ( !newArr[j] ) {
+                lostArr.push( j );
+            }
+        }
+        lostArr.shift( 0 );
+        console.log( lostArr );
+
+
+
+    </script>
+</body>
+</html>
