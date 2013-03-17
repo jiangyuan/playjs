@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> substring </title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+            一道面试题，自己实现 substring( start, end )
+        */
+        String.prototype.st = function( start, end ) {
+            var len = this.length, ret = [];
+            if ( typeof start !== "number" || start >= len ) {
+                return String(this);
+            }
+            start = start >= 0 ? start : len + start;
+            end = end + 1 || len;
+            if ( end < 0 ) {
+                end = len + end;
+            }
+            if ( end >= start ) {
+                for ( var i = start; i < end; i++ ) {
+                    ret.push( this[i] || this.charAt(i) );
+                }
+            }
+            return ret.join("");
+        };
+        var temp = "0123456789";
+        console.log( temp.st(0) );
+        console.log( temp.st(2) );
+        console.log( temp.st(9) );
+        console.log( temp.st(10) );
+        console.log( temp.st(0,4) );
+        console.log( temp.st(0,9) );
+        console.log( temp.st(0,10) );
+        console.log( temp.st(9,10) );
+        console.log( temp.st(5,9) );
+        console.log( temp.st(-5,-1) );
+        console.log( temp.st(-11,-10) );
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> somthing about path </title>
+</head>
+<body>
+    <script type="text/javascript">
+        var temp = "yhui/debug/base/../../globalize.js";
+        var temp2 = "yhui/debug/../globalize.js";
+        var temp3 = "yhui/debug/js/base/../plugin/jquery.mousewheel.js";
+        function route( path ) {
+            var r = /\w+\/\.\.\//;
+            path = path.replace( r, "" );
+            if ( path.indexOf("../") > -1 ) {
+                return arguments.callee( path );
+            } else {
+                return path;
+            }
+        }
+        console.log( route(temp) );
+        console.log( route(temp2) );
+        console.log( route(temp3) );
+    </script>
+</body>
+</html>

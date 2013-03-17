@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> this in js </title>
+</head>
+<body>
+    <script type="text/javascript">
+        var x = 20;
+        var temp = {
+            x: 40,
+            foo: function() {
+                var x = 10;
+                return this.x;
+            }
+        };
+        console.log( temp.foo() );                  //40
+        console.log( (temp.foo)() );                //40
+        console.log( (temp.foo=temp.foo)() );       //20
+        console.log( (temp.foo,temp.foo)() );       //20
+        console.log( temp.foo.apply( window ) );    //20
+        console.log( temp.foo.apply( temp ) );      //10
+    </script>
+</body>
+</html>
