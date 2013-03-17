@@ -15,11 +15,11 @@
             }
         };
         console.log( temp.foo() );                  //40
-        console.log( (temp.foo)() );                //40
-        console.log( (temp.foo=temp.foo)() );       //20
-        console.log( (temp.foo,temp.foo)() );       //20
+        console.log( (temp.foo)() );                //40 ?
+        console.log( (temp.foo=temp.foo)() );       //20 ?
+        console.log( (temp.foo,temp.foo)() );       //20 ?
         console.log( temp.foo.apply( window ) );    //20
-        console.log( temp.foo.apply( temp ) );      //10
+        console.log( temp.foo.apply( temp ) );      //40
     </script>
 </body>
 </html>
