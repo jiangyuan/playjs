@@ -30,6 +30,14 @@
         <td>不可</td>
     </tr>
     <tr>
+        <td>rowNum</td>
+        <td>integer</td>
+        <td>每一页所显示的行数。这个参数会传递到 url 指向的后台，服务器就可以此组织数据。 <br />
+            需要说明的是，如果该值为 20，但是后台返回了 30 条数据，那么依旧只显示 20 条数据。</td>
+        <td>20</td>
+        <td>可。</td>
+    </tr>
+    <tr>
         <td>shrinkToFit</td>
         <td>boolean or integer</td>
         <td>
@@ -42,5 +50,12 @@
         </td>
         <td>true</td>
         <td>不可</td>
+    </tr>
+    <tr>
+        <td>url</td>
+        <td>string</td>
+        <td>jqGrid 获取数据的链接。 可以设置为 "clientArray" ，从而可以手动的将数据 post 到服务器。</td>
+        <td>null</td>
+        <td>可</td>
     </tr>
 </table>
