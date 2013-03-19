@@ -23,6 +23,13 @@
         <td>不可。有对应方法。</td>
     </tr>
     <tr>
+        <td>jsonReader</td>
+        <td>object</td>
+        <td>用来描述 json 数据结构的对象。<a href="组织数据.md">详细</a></td>
+        <td></td>
+        <td>不可</td>
+    </tr>
+    <tr>
         <td>shrinkToFit</td>
         <td>boolean or integer</td>
         <td>
