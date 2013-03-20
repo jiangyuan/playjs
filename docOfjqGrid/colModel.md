@@ -10,7 +10,9 @@
     });
 
 colModel 可用的属性都在下面表格中。
-** 唯一必须设置的属性是 name 。**
+
+**唯一必须设置的属性是 name 。**
+
 colModel 的属性可以通过 getColProp 和 setColProp 方法来获取和修改。
 
 <table>
@@ -42,9 +44,9 @@ colModel 的属性可以通过 getColProp 和 setColProp 方法来获取和修�
     <tr>
         <td>name</td>
         <td>字符串</td>
-        <td>给表格中的每一列设置一个唯一的 name 值，通常会这个 name 会拼进列头的 id 中，所以请务必页面唯一。<br />
+        <td>给表格中的每一列设置一个唯一的 name 值，通常这个 name 会拼进列头的 id 中，所以请务必页面唯一。<br />
             <strong>这个值必须设置。</strong> <br />
-            有几个保留字不能取用；subgrid, cb 和 rn 。
+            有这么几个保留字不能取用：subgrid, cb 和 rn 。
         </td>
         <td> 无默认值。必须设置。 </td>
     </tr>
