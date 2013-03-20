@@ -18,7 +18,9 @@
     <tr>
         <td>height</td>
         <td>mixed</td>
-        <td>表格的高度。可选值： 数值，"100%"，"auto"。</td>
+        <td>表格的高度。可选值： 数值，"100%"，"auto"。 <br />
+            <strong>yhGrid 已经默认启用了高宽自适应。</strong>
+        </td>
         <td>150</td>
         <td>不可。有对应方法。</td>
     </tr>
@@ -57,5 +59,15 @@
         <td>jqGrid 获取数据的链接。 可以设置为 "clientArray" ，从而可以手动的将数据 post 到服务器。</td>
         <td>null</td>
         <td>可</td>
+    </tr>
+    <tr>
+        <td>width</td>
+        <td>数值</td>
+        <td>如果这个值没有设置，那么表格的宽度就是各列宽度之和。<br />
+            如果设置了，那么初试化表格的宽度会根据属性 shrinkToFit 来计算。<br />
+            <strong>yhGrid 已经默认启用了高宽自适应。</strong>
+        </td>
+        <td>none</td>
+        <td>不可。有专有方法。</td>
     </tr>
 </table>
