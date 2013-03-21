@@ -54,6 +54,13 @@
         <td>不可</td>
     </tr>
     <tr>
+        <td>sortable</td>
+        <td>布尔值</td>
+        <td>列是否可以拖动排序。<strong>注意：</strong> colModel 中也有一个 sortable 属性，请区别开来。</td>
+        <td>false</td>
+        <td>不可</td>
+    </tr>
+    <tr>
         <td>url</td>
         <td>string</td>
         <td>jqGrid 获取数据的链接。 可以设置为 "clientArray" ，从而可以手动的将数据 post 到服务器。</td>
