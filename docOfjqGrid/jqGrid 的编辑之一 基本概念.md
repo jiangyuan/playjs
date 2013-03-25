@@ -1,4 +1,6 @@
-# jqGrid 的编辑 基本概念
+# jqGrid 的编辑之基本概念
+
+[原文](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:common_rules)
 
 快速简单地编辑数据，应该是表格类控件最为重要的功能之一，jqGrid 支持以下三种编辑方式：
 
@@ -8,7 +10,7 @@
 
 ## 概览
 
-任何一种编辑方式都会在 colModel 中使用如下的属性：
+任何一种编辑方式都可在 colModel 中使用如下的属性：
 
  * editable
  * edittype
@@ -38,11 +40,13 @@
 值得注意的是，隐藏的列是不可以编辑的，但是他们被标记为了可编辑状态。在行编辑和单元格标记模式中，
 应该让他们显示 ( showCol ) 出来，从而可以编辑，而表单编辑则要用到属性 editrules 。
 
-## edittype
+### edittype
 
 这个值决定了可编辑的字段的类型，可以有如下取值：
 
-* text 默认值，编辑状态时，jqGrid会创建如下元素：
+* text 
+
+    默认值，编辑状态时，jqGrid会创建如下元素：
 
     ```html
     <input type="text" ...../>
@@ -61,3 +65,59 @@
     ```
 
     另外，jqGrid 会自动添加 id 和 name 属性。
+
+* textarea
+
+    编辑状态时，创建一个 textarea 元素。
+
+    用法和 text 类似。
+
+* checkbox
+    
+    显示为一个复选框。
+
+    属性 editoptions 被用来设置选中和未选中的值，如下：
+
+    ```js
+    ...editoptions: { value: "Yes:No" }  // 第一个是选中状态的值
+    ```
+
+    如上设置，会创建如下文本框：
+
+    ```html
+    <input type="checkbox" value="Yes" offval="No".../>
+    ```
+
+    仍旧以上述元素为例，当 value 设置为 yes 时，将会默认选中复选框。
+
+    这个值会做为一个参数附加在 editurl 之后。
+
+    editoptions 中如果没有设置 value 这个属性，jqGrid 为了创建复选框，将会寻找如下值 (false|0|no|off|undefined)
+    如果单元格内容不包含这些值，那么 value 就会被设置为单元格内容， offval 被设置为 off。
+
+    例如，假如单元格内容为 true 时，那么
+
+    ```html
+    <input type="checkbox" value="true" offval="off" checked.../>
+    ```
+
+    最后，jqGrid 会自动添加 id 和 name 属性。
+
+* select
+
+* password
+
+* button
+
+* image
+
+* file
+
+* custom
+
+### editoptions
+
+### editrules
+
+### formoptions
+
