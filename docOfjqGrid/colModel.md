@@ -1,7 +1,9 @@
 # colModel 列模型
 
-持续更新中……
 [原文](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:colmodel_options)
+
+持续更新中……
+
 
 属性 colModel ，以数组的形式定义了 grid 中各个列的表现及行为，是 jqGrid 中最重要的属性，没有之一。
 语法形式如下：
