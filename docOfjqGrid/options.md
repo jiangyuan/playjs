@@ -14,11 +14,25 @@
         <td>可改否</td>
     </tr>
     <tr>
+        <td>data</td>
+        <td>数组</td>
+        <td>js 数组，存储了表格需要的数据。这个值可以替代 addRowData 方法。</td>
+        <td>空数组</td>
+        <td>可</td>
+    </tr>
+    <tr>
         <td>datatype</td>
         <td>string</td>
         <td>数据类型。可选值有： "xml"， "xmlstring"， "json"， "local"， "javascript"， "clientSide" 。</td>
         <td>xml</td>
         <td>可</td>
+    </tr>
+    <tr>
+        <td>editurl</td>
+        <td>字符串</td>
+        <td>行编辑和表单编辑时的 url，用来保存修改的数据。</td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
         <td>height</td>
@@ -37,12 +51,54 @@
         <td>不可</td>
     </tr>
     <tr>
+        <td>multikey</td>
+        <td>字符串</td>
+        <td>
+            当 multiselect 为 true 时，该参数才有效。<br />
+            按住什么键可以多选。可选值： shiftKey， altKey，ctrlKey
+        </td>
+        <td>空字符串</td>
+        <td>可</td>
+    </tr>
+    <tr>
+        <td>multiboxonly</td>
+        <td>布尔值</td>
+        <td>
+            当 multiselect 为 true 时，该参数才有效。<br />
+            multiselect 为 true，点击 行 的任意位置都能选中该行。 <br />
+            multiboxonly 为 true 时，只有点击非当前行的复选框才能完成多选。
+        </td>
+        <td>false</td>
+        <td>可</td>
+    </tr>
+    <tr>
+        <td>multiselect</td>
+        <td>布尔值</td>
+        <td>可以选中多行，表格左边会多出一列复选框。</td>
+        <td>false</td>
+        <td>不可</td>
+    </tr>
+    <tr>
         <td>rowNum</td>
         <td>integer</td>
         <td>每一页所显示的行数。这个参数会传递到 url 指向的后台，服务器就可以此组织数据。 <br />
             需要说明的是，如果该值为 20，但是后台返回了 30 条数据，那么依旧只显示 20 条数据。</td>
         <td>20</td>
         <td>可。</td>
+    </tr>
+    <tr>
+        <td>selarrrow</td>
+        <td>数组</td>
+        <td>只读属性。可选择多行时，该值是一个包含已选择了的行的 id 的数组。</td>
+        <td>空数组</td>
+        <td>不可</td>
+    </tr>
+    <tr>
+        <td>selrow</td>
+        <td>字符串</td>
+        <td>只读属性。选中行的 id 值。如果排序或者翻页，该值被设为 null 。</td>
+        <td>null</td>
+        <td>不可</td>
     </tr>
     <tr>
         <td>shrinkToFit</td>

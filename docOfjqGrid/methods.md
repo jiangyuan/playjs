@@ -25,6 +25,18 @@
         </td>
     </tr>
     <tr>
+        <td>delRowData</td>
+        <td>rowid</td>
+        <td>成功返回 true ，失败返回 false </td>
+        <td>删除 id 为 rowid 的行。这个操作不会同步到数据库。 </td>
+    </tr>
+    <tr>
+        <td>getGridParam</td>
+        <td>属性名</td>
+        <td>视具体属性而定</td>
+        <td>获取指定的属性值。如果没有传入参数，则会获取整个 options 键值对。</td>
+    </tr>
+    <tr>
         <td>setGridheight</td>
         <td>new_height</td>
         <td>jqGrid Object</td>
@@ -43,6 +55,15 @@
             动态设置表格的宽度。<br />
             两个参数：new_width 就是将要设置的宽度；shrink(boolean)，和属性 shrinkToFit 有着相同的行为，
             如果该值缺省，那么将默认设置为 shrinkToFit 的值。
+        </td>
+    </tr>
+    <tr>
+        <td>trigger("reloadGrid")</td>
+        <td>无</td>
+        <td>无</td>
+        <td>按照当前的参数设定来重新发送请求加载表格。这里的当前和初始化的参数可能不同。<br />
+            这个方法会忽略( colModel ) 中信息，也就是如果你修改了 colModel 中的值，该方法会忽略，仍旧使用初始化
+            时候的值。
         </td>
     </tr>
 </table>
