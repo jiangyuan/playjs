@@ -22,10 +22,10 @@ colModel 的属性可以通过 getColProp 和 setColProp 方法来获取和修�
 
 <table>
     <tr>
-        <td>属性</td>
-        <td>类型</td>
-        <td>描述</td>
-        <td>默认值</td>
+        <th>属性</th>
+        <th>类型</th>
+        <th>描述</th>
+        <th>默认值</th>
     </tr>
     <tr>
         <td>align</td>

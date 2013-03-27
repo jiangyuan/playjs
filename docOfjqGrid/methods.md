@@ -6,10 +6,10 @@
 
 <table>
     <tr>
-        <td>方法名</td>
-        <td>参数</td>
-        <td>返回值</td>
-        <td>描述</td>
+        <th>方法名</th>
+        <th>参数</th>
+        <th>返回值</th>
+        <th>描述</th>
     </tr>
     <tr>
         <td>addRowData</td>

@@ -7,11 +7,11 @@
 
 <table>
     <tr>
-        <td>属性名</td>
-        <td>类型</td>
-        <td>描述</td>
-        <td>默认值</td>
-        <td>可改否</td>
+        <th>属性名</th>
+        <th>类型</th>
+        <th>描述</th>
+        <th>默认值</th>
+        <th>可改否</th>
     </tr>
     <tr>
         <td>data</td>
