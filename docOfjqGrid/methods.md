@@ -31,10 +31,32 @@
         <td>删除 id 为 rowid 的行。这个操作不会同步到数据库。 </td>
     </tr>
     <tr>
+        <td>editRow</td>
+        <td>rowid, keys</td>
+        <td>无</td>
+        <td>
+            根据传入的 rowid 编辑一行。<br />
+            key 是布尔值，是否启用键盘快捷键，[enter] 保存编辑， [esc] 取消编辑。<br />
+            详情请参见行内编辑。
+        </td>
+    </tr>
+    <tr>
         <td>getGridParam</td>
         <td>属性名</td>
         <td>视具体属性而定</td>
         <td>获取指定的属性值。如果没有传入参数，则会获取整个 options 键值对。</td>
+    </tr>
+    <tr>
+        <td>restoreRow</td>
+        <td>rowid</td>
+        <td>无</td>
+        <td>去小编辑。</td>
+    </tr>
+    <tr>
+        <td>saveRow</td>
+        <td>rowid, callback, url, extraparams </td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
         <td>setGridheight</td>
@@ -61,7 +83,8 @@
         <td>trigger("reloadGrid")</td>
         <td>无</td>
         <td>无</td>
-        <td>按照当前的参数设定来重新发送请求加载表格。这里的当前和初始化的参数可能不同。<br />
+        <td>
+            按照当前的参数设定来重新发送请求加载表格。这里的当前和初始化的参数可能不同。<br />
             这个方法会忽略( colModel ) 中信息，也就是如果你修改了 colModel 中的值，该方法会忽略，仍旧使用初始化
             时候的值。
         </td>
