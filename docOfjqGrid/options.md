@@ -35,6 +35,13 @@
         <td></td>
     </tr>
     <tr>
+        <td>emptyrecords</td>
+        <td>字符串</td>
+        <td>当查询的记录为空时显示的信息。</td>
+        <td>"无数据显示"</td>
+        <td>可</td>
+    </tr>
+    <tr>
         <td>height</td>
         <td>mixed</td>
         <td>表格的高度。可选值： 数值，"100%"，"auto"。 <br />
@@ -77,6 +84,39 @@
         <td>可以选中多行，表格左边会多出一列复选框。</td>
         <td>false</td>
         <td>不可</td>
+    </tr>
+    <tr>
+        <td>pager</td>
+        <td>字符串或者 jQuery 对象</td>
+        <td>翻页栏，详情请参见 <strong>翻页栏</strong>。</td>
+        <td>空字符串</td>
+        <td>不可</td>
+    </tr>
+    <tr>
+        <td>recordpos</td>
+        <td>字符串</td>
+        <td>“信息区”的位置。详情参见“翻页栏”。</td>
+        <td>right</td>
+        <td>不可</td>
+    </tr>
+    <tr>
+        <td>records</td>
+        <td>数值</td>
+        <td>只读属性。查询的总记录书。</td>
+        <td>none</td>
+        <td>不可</td>
+    </tr>
+    <tr>
+        <td>recordtext</td>
+        <td>字符串</td>
+        <td> 
+            record 的显示形式。以默认值为例：<br />
+            {0} -- 记录的开始位置，和页数(page)相关
+            {1} -- 记录的结束位置，和开始位置以及 rowNum 相关
+            {2} -- 总记录数
+        </td>
+        <td>"{0} - {1}\u3000共 {2} 条"</td>
+        <td>可</td>
     </tr>
     <tr>
         <td>rowNum</td>
@@ -134,6 +174,16 @@
         <td>jqGrid 获取数据的链接。 可以设置为 "clientArray" ，从而可以手动的将数据 post 到服务器。</td>
         <td>null</td>
         <td>可</td>
+    </tr>
+    <tr>
+        <td>viewrecords</td>
+        <td>布尔值</td>
+        <td>
+            "x-y 共 xxx 条"。分页时，显示分页的起始和结束位置，以及总记录数。<br />
+            另外，属性 emptyrecords 和 recordtext 可以配合该值使用。
+        </td>
+        <td>false</td>
+        <td>不可</td>
     </tr>
     <tr>
         <td>width</td>
