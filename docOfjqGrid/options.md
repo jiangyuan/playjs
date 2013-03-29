@@ -93,6 +93,13 @@
         <td>不可</td>
     </tr>
     <tr>
+        <td>postData</td>
+        <td>对象</td>
+        <td>传递到服务器端的数据。</td>
+        <td>空对象。</td>
+        <td>可</td>
+    </tr>
+    <tr>
         <td>recordpos</td>
         <td>字符串</td>
         <td>“信息区”的位置。详情参见“翻页栏”。</td>
