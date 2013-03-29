@@ -4,6 +4,7 @@
 
 持续更新中……
 
+<strong>提示</strong>：下表中的“可该否”是指是否可以通过 setGridParam 方法来修改参数并生效。
 
 <table>
     <tr>
@@ -12,6 +13,13 @@
         <th>描述</th>
         <th>默认值</th>
         <th>可改否</th>
+    </tr>
+    <tr>
+        <td>caption</td>
+        <td>字符串</td>
+        <td>表格的标题。如果为空，则不显示标题行。</td>
+        <td>空字符串。</td>
+        <td>不可。有相应方法。</td>
     </tr>
     <tr>
         <td>data</td>
@@ -42,6 +50,19 @@
         <td>可</td>
     </tr>
     <tr>
+        <td>gridview</td>
+        <td>布尔值</td>
+        <td>
+            这个属性和性能相关，我个人觉得这个 "gridview" 单词有点无厘头。 <br />
+            jqGrid 3.4 之前的版本，渲染很多行 (>100) 时速度很慢，原因是每一个单元格都初始化了 jQuery 对象。<br />
+            现在的版本已经解决了这个问题，方式是使用 append 方法一次添加一行，速度提高了 3~5 倍。<br />
+            但一次性加载所有的数据的时候，将 gridview 设置为 true ，性能还能再提高 5~10 倍。 <br />
+            务必注意，这个值设置为 true 时，树形表格、子表以及事件 afterInsertRow 都不能用。
+        </td>
+        <td>false</td>
+        <td>可</td>
+    </tr>
+    <tr>
         <td>height</td>
         <td>mixed</td>
         <td>表格的高度。可选值： 数值，"100%"，"auto"。 <br />
@@ -56,6 +77,24 @@
         <td>用来描述 json 数据结构的对象。<a href="组织数据.md">详细</a></td>
         <td></td>
         <td>不可</td>
+    </tr>
+    <tr>
+        <td>loadonce</td>
+        <td>布尔值</td>
+        <td>
+            一次性从服务端加载所有数据。<br />
+            请发送请求之后，属性 datatype 自动变为 local ，所有的操作都在客户端进行。<br />
+            “翻页栏”相关的方法全部禁用。
+        </td>
+        <td>false</td>
+        <td>不可</td>
+    </tr>
+    <tr>
+        <td>mtype</td>
+        <td>字符串</td>
+        <td>请求的类型，"POST" 或者 "GET" 。</td>
+        <td>GET</td>
+        <td>可</td>
     </tr>
     <tr>
         <td>multikey</td>
@@ -134,6 +173,24 @@
         <td>可。</td>
     </tr>
     <tr>
+        <td>rownumbers</td>
+        <td>布尔值</td>
+        <td>
+            jqGrid 左边新增一列，表示行号，从 1 开始。<br />
+            而且，colModel 会自动增加一个 name 为 rn 的项。 <br />
+            所以，colModel 中不能出现 name 为 rn 的情况。
+        </td>
+        <td>false</td>
+        <td>不可</td>
+    </tr>
+    <tr>
+        <td>rownumWidth</td>
+        <td>数值</td>
+        <td>rownumbers 为 true 的情况下，该列的宽度值。</td>
+        <td>20</td>
+        <td>可</td>
+    </tr>
+    <tr>
         <td>savedRow</td>
         <td>对象</td>
         <td>这是一个只读属性，在行和单元格可编辑之前，存放现有数据。</td>
@@ -174,6 +231,16 @@
         <td>列是否可以拖动排序。<strong>注意：</strong> colModel 中也有一个 sortable 属性，请区别开来。</td>
         <td>false</td>
         <td>不可</td>
+    </tr>
+    <tr>
+        <td>sortorder</td>
+        <td>字符串</td>
+        <td>
+            初始化时的排序方法，"asc" 或者 "desc" 。<br />
+            该值会被传到服务器端。
+        </td>
+        <td> asc </td>
+        <td>可以</td>
     </tr>
     <tr>
         <td>url</td>
