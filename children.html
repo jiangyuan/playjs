@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> children </title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="">hh</a></li>
+            <li><a href="">hh</a></li>
+            <li><a href="">hh</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var div = document.getElementsByTagName( "div" )[0];
+    /*
+        获取一个元素的所有元素节点
+    */
+        var children = div.getElementsByTagName( "*" );
+        //console.log( children );
+
+    /*
+        除文本元素外的所有节点
+    */
+    function notText( node ) {
+        var ret = [],
+            traverseNode = function( node ) {
+                node = node.firstChild;
+                while( node ) {
+                    if ( node.nodeType !== 3 ) {
+                        ret.push( node.nodeName );
+                    }
+                    traverseNode( node );
+                    node = node.nextSibling;
+                }
+            };
+
+        traverseNode( node );
+
+        return ret;
+    }
+
+    console.log( notText(div) );
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>clone</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+            来自 zTree
+            对于递归，理解的不够深
+        */
+        function clone( obj ) {
+            if ( !obj ) return;
+            var o = obj.constructor === Array ? [] : {};
+            for ( var i in obj ) {
+                o[i] = obj[i] instanceof Date
+                            ? new Date( obj[i].getTime() )
+                            : (typeof obj[i] === "object"
+                                ? arguments.callee(obj[i])
+                                : obj[i]);
+            }
+            return o;
+        }
+
+        var e1 = [1,2,3], c1;
+        var e2 = [1, undefined, 3], c2;
+        var e3 = { a: "a", b: "b", c: "c" }, c3;
+        var e4 = { a: undefined, b: "b", c: "c" }, c4;
+
+        var e5 = [ 1, e3, 3 ], c5;
+
+        console.log( c1 = clone(e1) );
+        console.log( c2 = clone(e2) );
+        console.log( c3 = clone(e3) );
+        console.log( c4 = clone(e4) );
+        console.log( c5 = clone(e5) );
+
+    </script>
+</body>
+</html>

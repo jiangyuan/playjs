@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>闭包</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        function create() {
+            var result = [];
+            for ( var i = 0; i < 10; i++ ) {
+                result[i] = function() {
+                    return( i );
+                };
+            }
+            return result;
+        }
+
+        var funcs = create();
+        for ( var i = 0; i < funcs.length; i++ ) {
+            //console.log( funcs[i]() );
+            funcs[i]();
+        }
+
+    </script>
+</body>
+</html>
