@@ -79,6 +79,7 @@ script 标签加载完成就会执行其中的代码，因此其内容必须合�
     id: 1,
     name: 2
 }
+```
 
 代码肯定要跪掉，因此必须这样： 
 
@@ -89,6 +90,6 @@ callback({
 });
 ```
 
-callback 可以在放松请求时放在 url 后传过去，当然，当前页面也必须有 callback 函数。
+callback 可以在发送请求时放在 url 后传过去，当然，当前页面也必须有 callback 函数。
 
 OK，这就是 jsonp 。
