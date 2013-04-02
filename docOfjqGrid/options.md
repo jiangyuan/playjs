@@ -233,6 +233,16 @@
         <td>不可</td>
     </tr>
     <tr>
+        <td>sortname</td>
+        <td>字符串</td>
+        <td>
+            默认初始化排序的列名称，比如要让表格依据 colModel 中的 name 为 id 的列排序，那么设置为 "id" 。<br />
+            设置该值后，对应的列头中会出现箭头。
+        </td>
+        <td>空字符串</td>
+        <td>可</td>
+    </tr>
+    <tr>
         <td>sortorder</td>
         <td>字符串</td>
         <td>
