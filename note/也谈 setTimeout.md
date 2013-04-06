@@ -73,16 +73,18 @@ IE6 中出现的奇葩问题竟然可用 setTimeout(func, 0) 神奇地解决。
 可以更深入的思考： setTimeout( func, 0 ) 是延迟 0ms 执行，也就是立刻执行，但为什么还是在重绘之后呢？
 重绘肯定会超过 0ms 啊！
 
-到这里，这是这篇笔记的终极目的， javascript 单线程的异步模式。
+到这里才是这篇笔记的终极目的， javascript 单线程的异步模式。
 
 jQuery 作者 John Resig 的这篇《[How JavaScript Timers Work](http://ejohn.org/blog/how-javascript-timers-work/)》通俗易懂地阐述了这个问题……
 
 以下是我对这篇文章的理解：
 
+***
+
 理解 javasript 定时器的内部机制是必要的，虽然有时候这些定时器表现的很古怪。
 
-为了理解定时器的内部机制，有一点必须着重强调：延迟时间的精确度无法保证，如果延迟 10ms ，回调函数不一定在 10ms 后执行。
-这是因为，浏览器中的 javascript 引擎室单线程，所有的异步函数必须等到有很适合的时候才会执行。
+为了理解定时器的内部机制，有一点必须着重强调：延迟时间的精确度无法保证，比如延迟 10ms ，回调函数不一定在 10ms 后执行。
+这是因为，浏览器中的 javascript 引擎是单线程，所有的异步函数必须等到适合的时间执行。
 
 为了更好地阐述，John 采用了看图说话的方式，<a href="http://ejohn.org/files/Timers.png" target="_blank">点击查看图片</a>。
 
@@ -106,9 +108,9 @@ jQuery 作者 John Resig 的这篇《[How JavaScript Timers Work](http://ejohn.o
 事件处理函数执行完毕， timer 执行，这个时候， interval 又触发了，要知道上一个 interval 还没有执行，怎么办？
 
 这一次的 interval 会被抛弃 (dropped) 。如果不抛弃，那么有可能大量的 interval 会在 timer 执行完后同时执行，这显然不符合逻辑。
-浏览器的排队方式是先检查有没有 interval ，如果没有，排队，有就抛弃。
+对于这，浏览器的排队方式是先检查有没有 interval ，如果没有，排队，有就抛弃。
 
-继续看，当 timer 执行完， 第一个 interval 执行，在这个过程中，第三个 interval 触发，在其自身执行过程中，自身也可以被触发。
+继续看，当 timer 执行完， 第一个 interval 执行，在这个过程中，第三个 interval 触发.在其自身执行过程中，自身也可以被触发。
 可见， setInterval 不管当前在执行什么，他都会强行排队，即使本身还没执行完。
 
 最后没什么好说的了，没什么可等，所有的 interval 会立刻执行。
@@ -137,9 +139,9 @@ setTimeout 总是会在其回调函数执行后延迟 10ms （或者更多，但
 
 * setTimeout 和 setInterval 的机制完全不同。
 
-* 如果定时器的代码总是会被延迟到下一个可能的时间点执行，这个时间点很可能比你给定的时间要长。
+* 定时器的代码总是会被延迟到下一个可能的时间点执行，这个时间点很可能比你给定的时间要长。
 
-* 如果 Intervals 的回调执行时间比你给定的 delay 还要长，那么他们会连在一起执行.
+* 如果 Intervals 的回调执行时间比你给定的 delay 还要长，那么他们会连在一起执行。
 
 ***
 
