@@ -77,5 +77,7 @@ IE6 中出现的奇葩问题竟然可用 setTimeout(func, 0) 神奇地解决。
 
 jQuery 作者 John Resig 的这篇《[How JavaScript Timers Work](http://ejohn.org/blog/how-javascript-timers-work/)》通俗易懂地阐述了这个问题……
 
+John 是看图说话，<a href="http://ejohn.org/files/Timers.png" target="_blank">点击查看图片</a>。
+
 
 ## setTimeout 中的 this
