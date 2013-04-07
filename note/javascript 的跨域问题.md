@@ -93,3 +93,108 @@ callback({
 callback 可以在发送请求时放在 url 后传过去，当然，当前页面也必须有 callback 函数。
 
 OK，这就是 jsonp 。
+
+
+## 利用 iframe 和 location.hash
+
+就我个人而言，这个方法实在是有些蛋疼，但也不失为解决跨域的方法。
+
+需求如下：
+
+```js
+a.com 下 有页面 a.html ，主页面，需要和
+b.com 下 页面 b.html 通信
+```
+
+先说说 location.hash ，这段 url
+
+```html
+a.html#data
+```
+
+中的 #data 就是 location#hash 。
+
+经常使用锚点的同学应该很熟悉，这个东东可以页面定位到 id 为 data 的元素位置。
+
+除此之外，改变 hash 会改变浏览器的历史记录但是不刷新或者跳转页面，并且，在高级浏览器（IE8+）中你可以通过
+
+```js
+window.onhashchange
+```
+事件来监听这个变化，当然，如果你想兼容所有浏览器(IE6+)又懒得自己动手，
+可以参考 [jQuery hashchange event](http://benalman.com/projects/jquery-hashchange-plugin/) 。
+利用这个事件，可以来做 [deeplink](http://www.impressivewebs.com/deep-linking-javascript-ajax/) 。
+
+当然，我们这里是要做跨域，差点跑题了。
+
+上面的需求可以概括为， a.com 下的 a.html 想跨域获取 b.com 下的 b.html 页面上的数据。
+
+大体思路： 
+
+a.html 中创建 iframe 指向 b.html 并利用 hash 传递数据 
+
+b.html 拿到参数，修改 a.html 页面的 hash 来传递数据
+
+a.html 通过 onhashchange 事件监听自身的 hash 变化，获取数据
+
+代码：
+
+首先在 a.html 页面中创建一个 iframe ，并指向 b.html ，代码如下：
+
+```
+// 请求 b.html 
+function request() {
+    var iframe = document.createElement( "iframe" )
+    iframe.style.display = "none";
+    iframe.src = "http://b.com/b.html#data";    // 注意 hash
+    document.body.appendChild( iframe );
+}
+
+
+// 监听 hash
+window.onhashchange = function() {
+    var data = location.hash ? location.hash.substring(1) : "";
+    console.log( "Now the data is " + data) ;
+}
+
+b.html 页面中的代码
+
+```js
+//模拟一个简单的参数处理操作
+switch( location.hash ){
+    case '#data':
+        callBack();
+        break;
+    case '#data2':
+        //do something……
+        break;
+}
+
+function callBack(){
+    try {
+        parent.location.hash = "somedata";
+    } catch (e) {
+        // ie、chrome的安全机制无法修改parent.location.hash，
+        // 所以要利用一个中间的cnblogs域下的代理iframe
+        var iframe = document.createElement( "iframe" );
+        iframe.style.display = "none";
+        iframe.src = "http://a.com/a2.html#somedata";    // 注意该文件在"a.com"域下
+        document.body.appendChild( iframe );
+    }
+}
+```
+
+现在知道我为什么说这种方法蛋痛了吧，第三个 (a.com 下的 a.html) 页面出现了，其中代码
+
+```js
+// parent.parent 就是 a.html 
+// 因为parent.parent和自身属于同一个域，所以可以改变其location.hash的值
+parent.parent.location.hash = location.hash.substring(1);
+```
+
+跨域是搞定了，但是这个方法的缺陷也很明显：数据直接暴露在了url中，数据容量和类型都有限等……
+
+整个方法就是这样了，这个方法的出现充分证明了 javascript 跨域实在是，坑爹！
+
+
+
