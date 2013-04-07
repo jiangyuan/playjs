@@ -101,7 +101,7 @@ OK，这就是 jsonp 。
 
 需求如下：
 
-```js
+```html
 a.com 下 有页面 a.html ，主页面，需要和
 b.com 下 页面 b.html 通信
 ```
@@ -112,9 +112,9 @@ b.com 下 页面 b.html 通信
 a.html#data
 ```
 
-中的 #data 就是 location#hash 。
+中的 #data 就是 location.hash 。
 
-经常使用锚点的同学应该很熟悉，这个东东可以页面定位到 id 为 data 的元素位置。
+经常使用锚点的同学应该很熟悉，这个东东可以将页面定位到 id 为 data 的元素位置。
 
 除此之外，改变 hash 会改变浏览器的历史记录但是不刷新或者跳转页面，并且，在高级浏览器（IE8+）中你可以通过
 
@@ -156,6 +156,7 @@ window.onhashchange = function() {
     var data = location.hash ? location.hash.substring(1) : "";
     console.log( "Now the data is " + data) ;
 }
+```
 
 b.html 页面中的代码
 
@@ -174,8 +175,8 @@ function callBack(){
     try {
         parent.location.hash = "somedata";
     } catch (e) {
-        // ie、chrome的安全机制无法修改parent.location.hash，
-        // 所以要利用一个中间的cnblogs域下的代理iframe
+        // ie、chrome 的安全机制无法修改 parent.location.hash，
+        // 所以要利用一个中间的 a.com 域下的代理 iframe
         var iframe = document.createElement( "iframe" );
         iframe.style.display = "none";
         iframe.src = "http://a.com/a2.html#somedata";    // 注意该文件在"a.com"域下
@@ -184,7 +185,7 @@ function callBack(){
 }
 ```
 
-现在知道我为什么说这种方法蛋痛了吧，第三个 (a.com 下的 a.html) 页面出现了，其中代码
+现在知道我为什么说这种方法蛋痛了吧，第三个页面 (a.com 下的 a2.html) 出现了，其中代码
 
 ```js
 // parent.parent 就是 a.html 
