@@ -154,7 +154,7 @@ function request() {
 // 监听 hash
 window.onhashchange = function() {
     var data = location.hash ? location.hash.substring(1) : "";
-    console.log( "Now the data is " + data) ;
+    console.log( "Now the data is " + data ) ;
 }
 ```
 
@@ -175,7 +175,7 @@ function callBack(){
     try {
         parent.location.hash = "somedata";
     } catch (e) {
-        // ie、chrome 的安全机制无法修改 parent.location.hash，
+        // ie、chrome 的安全机制（不同域）无法修改 parent.location.hash，
         // 所以要利用一个中间的 a.com 域下的代理 iframe
         var iframe = document.createElement( "iframe" );
         iframe.style.display = "none";
