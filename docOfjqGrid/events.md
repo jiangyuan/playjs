@@ -1,5 +1,9 @@
 # jqGrid 的事件
 
+[原文](http://www.trirand.com/jqgridwiki/doku.php?id=wiki:events)
+
+持续更新中……
+
 jqGrid 事件的设置方法和 jQuery UI 组件一样，如下：
 
 ```js
@@ -18,6 +22,8 @@ $( "#grid" ).jqGrid({
 ```
 
 这段代码是设置了 onSelectRow 事件，在选中行后，使其可编辑。
+
+## 事件列表
 
 <table>
     <tr>
