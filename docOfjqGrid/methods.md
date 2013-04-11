@@ -90,6 +90,12 @@ $( "#grid_id" ).jqGrid( "method", parameter1, ...parameterN );
         </td>
     </tr>
     <tr>
+        <td>getDataIds</td>
+        <td>无</td>
+        <td>数组</td>
+        <td>返回服务器响应的数据中的所有 id 值。</td>
+    </tr>
+    <tr>
         <td>getGridParam</td>
         <td>属性名</td>
         <td>视具体属性而定</td>
@@ -183,6 +189,25 @@ $( "#grid_id" ).jqGrid( "method", parameter1, ...parameterN );
             动态设置表格的宽度。<br />
             两个参数：new_width 就是将要设置的宽度；shrink(boolean)，和属性 shrinkToFit 有着相同的行为，
             如果该值缺省，那么将默认设置为 shrinkToFit 的值。
+        </td>
+    </tr>
+    <tr>
+        <td>setGridParam</td>
+        <td>object</td>
+        <td>jqGrid 对象</td>
+        <td>
+            jqGrid 初始化完成后，重新设置某些参数。 <br />
+            有些参数不能用这个方法设置。 <br />
+            有些参数必须 trigger( "reloadGrid" ) 才有效。 <br />
+            这个方法还可以修改事件。
+        </td>
+    </tr>
+    <tr>
+        <td>setSelection</td>
+        <td>rowid, onselectrowFlag</td>
+        <td>jqGrid 对象</td>
+        <td>切换 rowid 行的选中状态。<br />
+            onselectrowFlag 为 true 时，会触发 onSelectRow 事件。
         </td>
     </tr>
     <tr>
