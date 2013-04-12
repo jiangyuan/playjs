@@ -137,7 +137,8 @@ $( "#grid_id" ).jqGrid( "method", parameter1, ...parameterN );
         <td>jqGrid 对象</td>
         <td>
             隐藏一列或者多列。<br />
-            表格的宽度不会改变。
+            colName 是来自 colModel 中的 name 。 <br />
+            不会去改变表格的宽度。
         </td>
     </tr>
     <tr>
@@ -208,6 +209,16 @@ $( "#grid_id" ).jqGrid( "method", parameter1, ...parameterN );
         <td>jqGrid 对象</td>
         <td>切换 rowid 行的选中状态。<br />
             onselectrowFlag 为 true 时，会触发 onSelectRow 事件。
+        </td>
+    </tr>
+    <tr>
+        <td>showCol</td>
+        <td>colName或者 [colNames]</td>
+        <td>jqGrid 对象</td>
+        <td>
+            显示隐藏的一列或者多列。<br />
+            colName 是来自 colModel 中的 name 。 <br />
+            不会去改变表格的宽度。
         </td>
     </tr>
     <tr>
