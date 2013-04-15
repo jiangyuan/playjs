@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> something about regexp</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*console.log( 1 );
+        var t1 = /ab/;
+        console.log( t1.exec("ab") );
+        console.log( t1.exec("cd")[1] );
+        console.log( "---" );
+
+        console.log( 12 );
+        var t12 = /(ab)|/;
+        console.log( t12.exec("ab") );
+        console.log( t12.exec("cd")[1] );
+        console.log( "---" );
+
+        console.log( 2 );
+        var t2 = /a(b)/;
+        console.log( t2.exec("ab") );
+        console.log( t2.exec("cd") );
+        console.log( "---" );
+
+        console.log( 3 );
+        var t3 = /a(b|)/;
+        console.log( t3.exec("ab") );
+        console.log( t3.exec("cd") );
+        console.log( "---" );
+
+        console.log( 4 );
+        var t4 = /(a(b)|)/;
+        console.log( t4.exec("ab") );
+        console.log( t4.exec("cd") );
+        console.log( "---" );
+
+        console.log( 5 );
+        var t5 = /(a(b|)|)/;
+        console.log( t5.exec("ab") );
+        console.log( t5.exec("cd") );
+        console.log( "---" );*/
+
+        var r1 = /ab|c/;
+        var r2 = /(?:ab|c)/;
+        var r3 = /(ab)|c/;
+
+        console.log( r1.test("ab") );
+        console.log( r2.test("ab") );
+        console.log( r3.test("ab") );
+
+        console.log( r1.test("ac") );
+        console.log( r2.test("ac") );
+        console.log( r3.test("ac") );
+
+        console.log( r1.test("abc") );
+        console.log( r2.test("abc") );
+        console.log( r3.test("abc") );
+
+        
+    </script>
+</body>
+</html>
