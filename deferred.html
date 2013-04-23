@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> jquery deferred </title>
+</head>
+<body>
+    <script type="text/javascript" src = "http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        
+
+        var wait = function() {
+            var dtd = $.Deferred();
+            setTimeout( function() {
+                console.log( "h" );
+                dtd.resolve();
+                //dtd.resolveWith( document );
+
+                // fire 其实也是调用 fireWith
+            }, 5000 );
+            return dtd;
+        };
+
+
+        wait().done(function() {
+            console.log( this );
+        });
+
+
+
+
+        // deferred 似乎还没有 callbacks 思路清晰啊
+        // 求比较！
+
+        // 难道 deferred 最大的贡献就是链式调用后所达成的语义化？
+        /*var cl = $.Callbacks( "once memory" );
+
+        var wait = function() {
+            setTimeout(function() {
+                alert( "h" );
+                cl.fire();
+            }, 5000);
+        };
+
+        cl.add(function() {
+            alert( "aha, done!" );
+        });
+
+        wait();*/
+
+
+
+    </script>
+</body>
+</html>
