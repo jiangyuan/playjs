@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> querySelector </title>
+    <style type="text/css">
+        td { border: 1px solid #000; padding: 10px; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var table = document.querySelector( "table" );
+        table.addEventListener( "click", function() {
+
+            // 以前还不觉得什么，这么一看 querySelector 确实惊艳。
+            // 支持 css3 选择器太可怕了。
+            var td = document.querySelector( "td:hover" );
+            if ( td ) {
+                alert( td.innerHTML );
+            }
+        }, false );
+    </script>
+</body>
+</html>
