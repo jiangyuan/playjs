@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> 3001-target </title>
+
+</head>
+<body>
+    <script type="text/javascript">
+
+        // 端口 3001
+        // 3000 通过 hash 传来参数，这里获取到，处理后给出响应
+        var hash = location.hash.substring(1);
+        var res;
+        if ( hash ) {
+            res = hash + "RES";
+        }
+
+        // parent.window.loaction.hash = res;
+        // 尝试直接访问父 window 被拒，因此需要第三个页面 proxy.html
+
+
+        var iframe = document.createElement( "iframe" );
+        iframe.style.display = "none";
+        // 指向 3000 中的 proxy.html ，当然， 带上响应数据
+        iframe.src = "http://localhost:3000/crossdomain/hash/3000proxy.html#" + res;
+        document.body.appendChild( iframe );
+        
+    </script>
+</body>
+</html>

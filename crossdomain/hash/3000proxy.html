@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> 3000-proxy </title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+            该页面千载 3001 中，加载完成就可以执行如下代码
+            改变发出请求的页面的 hash ，即跨域传递数据
+        */
+        top.location.hash = location.hash.substring( 1 );
+    </script>
+</body>
+</html>

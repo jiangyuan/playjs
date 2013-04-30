@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> 3000-source </title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="../../js/j.js"></script>
+</head>
+<body>
+    <h1> hash 值的跨域 </h1>
+    <div id="console"></div>
+    <!-- 端口 3000 ： 通过 hash 传递数据 -->
+    <iframe src="http://localhost:3001/crossdomain/hash/3001.html#param" frameborder="0"></iframe>
+    <script type="text/javascript">
+
+        /*
+            在火狐中可以尝试访问跨域 iframe 的 document ，但是访问 body 失败
+            在 chrome 中尝试访问 document 都会发出警告
+        */
+        /*var ifr = $.byTag( "iframe" );
+        ifr.addEventListener( "load", function() {
+            console.log( this.contentDocument.body );
+        }, false);*/
+
+
+        /*
+            现代浏览器中可以通过 hashchange 事件来监测 hash 值的变化
+            到这一步也就完成了通过 hash 跨域获取数据的整个过程
+
+            在老版本的 ie 中没有 hashchange 事件，得通过 setTimeout 轮询监控
+        */
+        window.addEventListener( "hashchange", function(e) {
+            var resposeData = location.hash.substring( 1 );
+            $.byId( "console" ).innerHTML = "返回的数据为：" + resposeData;
+        });
+    </script>
+</body>
+</html>
