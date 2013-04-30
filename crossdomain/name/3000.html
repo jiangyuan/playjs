@@ -11,20 +11,30 @@
     <script type="text/javascript">
         var con = document.getElementById( "console" );
         var iframe = document.createElement( "iframe" );
+
+
         iframe.style.display = "none";
         iframe.src = "http://localhost:3001/crossdomain/name/3001.html";
 
         var state;
         var loaded = function() {
+
+            // 其实这个 loaded 会被执行两次
+                // 第一次加载跨域的页面，第二次加载同域的代理页面，所有要有 state 来判断
             if ( state ) {
+                // 获取数据
                 var data = iframe.contentWindow.name;
                 con.innerHTML = "跨域访问的数据是：" + data || "失败";
+
+                // 移除 iframe ，保证安全
                 iframe.removeEventListener( "load", loaded );
                 iframe.contentWindow.document.write( "" );
                 iframe.contentWindow.close();
                 document.body.removeChild( iframe );
             } else {
                 state = 1;
+
+                // 将 src 指向同域代理
                 iframe.src = "http://localhost:3000/crossdomain/name/3000proxy.html";
             }
         };
