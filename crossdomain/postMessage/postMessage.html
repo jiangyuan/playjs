@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> postMessage </title>
+</head>
+<body>
+    <!-- 这个文件运行在端口 3000 下 -->
+    <!-- 向端口 3001 传递参数，以期获得数据 -->
+    <iframe src="http://localhost:3001/crossdomain/postMessage/postMessageTarget.html" frameborder="0"></iframe>
+    <script type="text/javascript">
+        var ifr = document.getElementsByTagName( "iframe" )[0];
+        ifr.addEventListener( "load", function() {
+            // 传送参数
+            ifr.contentWindow.postMessage( "post data", "*" );        
+        }, false );
+
+        // 获取返回的数据
+        window.addEventListener( "message", function(e) {
+            console.log( "the response data is: " + e.data );
+        });
+    </script>
+</body>
+</html>
