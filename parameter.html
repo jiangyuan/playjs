@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>全局变量和函数参数重名</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var name;
+        function setName( name ) {
+            name = name;
+        }
+
+        setName( "1" );
+        console.log( name );
+    </script>
+</body>
+</html>
