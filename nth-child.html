@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> nth-child and nth-of-type </title>
+    <style type="text/css">
+        /* .child1下的 p 元素，并且这个 p 元素是 child1 的第二个子元素 */
+        .child1 p:nth-child(2) { color: red; }
+
+        /* .type1 p 集合中的 第二个 p 元素 */
+        .type1 p:nth-of-type(2) { color: red; }
+    </style>
+</head>
+<body>
+    <div class="child1">
+        <div>test</div>
+        <!-- <div>test</div> -->
+        <p>0</p>
+        <p>1</p>
+        <p>2</p>
+    </div>
+    <div class="type1">
+        <div>test</div>
+        <!-- <div>test</div> -->
+        <p>0</p>
+        <p>1</p>
+        <p>2</p>
+    </div>
+</body>
+</html>

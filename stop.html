@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> jquery 的 stop </title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #CCC;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <button>stop</button>
+    <script type="text/javascript">
+        $( "button" ).on( "click", function() {
+            $( "div" ).stop();
+        });
+        $( "div" ).fadeOut( 3000, function() {
+            console.log( "done" );
+        });
+    </script>
+</body>
+</html>

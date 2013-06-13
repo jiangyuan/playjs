@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> own property </title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*var o = {
+            a: "a"
+        };
+
+        var f = function() {
+            this.a = "a";
+        };
+
+        var i = new f();
+
+        console.log( o.hasOwnProperty( "a" ) );
+        console.log( i.hasOwnProperty( "a" ) );*/
+
+
+        var a = function() {
+            if ( !(this instanceof a) ) {
+                return new a();
+            }
+            this.a = "a";
+        };
+        var a1 = a();
+        console.log( a1 );
+        console.log( a1.a );
+    </script>
+</body>
+</html>

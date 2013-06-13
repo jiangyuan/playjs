@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> bind </title>
+</head>
+<body>
+    <script type="text/javascript">
+        var a = 0
+        var $ = {
+            a: 1,
+            b: function() {
+                setTimeout( function() {
+                    alert( this.a );
+                }.bind(this), 300 );
+            }
+        };
+        //$.b();
+    </script>
+<script type="text/javascript" src="http://ptres.37wan.com/js/jquery1.8.3.js"></script>
+<script type="text/javascript">
+    var a = {
+        a: 1,
+        title: "22",
+        url: "http://www.37wan.com/",
+        appid: "",
+        img: "http://www.37wan.com/images/logo.jpg",
+        r: $.now()
+    };
+    // https://open.weixin.qq.com/qr/get/Z2MbC2RGqo3C9JIh/
+    function showWxBox( id ) {
+        
+    }
+</script>
+<script type="text/javascript" src="https://open.weixin.qq.com/qr/set/?a=1&title=22&url=http%3A%2F%2Fwww.37wan.com%2F&img=http%3A%2F%2Fwww.37wan.com%2Fimages%2Flogo.jpg&r=1370318900276"></script>
+</body>
+</html>

@@ -3,9 +3,43 @@ border-radius()
     -moz-border-radius arguments
     border-radius arguments
 
-fonts = "微软雅黑"
+f = "微软雅黑"
+fonts = 12px f
 
 a 
-    font 12px fonts
+    font fonts
     &:hover 
-        font 14px fonts
+        font 14px f
+
+
+
+position()
+    position: arguments
+    z-index: 1 unless @z-index
+
+#logo
+    z-index: 20
+    position: absolute
+
+#logo2
+    position: absolute
+
+
+body > ul
+    color: red
+
+/* 后台选择器真的容易晕 */
+body
+    color: red
+    ul
+        color: yellow
+        li
+            color: blue
+            a
+                background-color: @color
+
+
+
+body
+    color #020-#0e0
+    _display inline
