@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> radio checkbox and select </title>
+</head>
+<body>
+    <p>什么情况？</p>
+    <form action="">
+        <span>
+            <input type="radio" name="radio" id="" />
+            <input type="radio" name="radio" id="" />
+            <input type="radio" name="radio" id="" />
+        </span>
+    </form>
+    <script type="text/javascript">
+
+        function isChecked( check ) {
+            for ( var i = 0, l = check.length; i < l; i ++ ) {
+                if ( check[i].checked ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        var radio = document.getElementsByName( "radio" );
+        console.log( isChecked(radio) );
+    </script>
+</body>
+</html>
