@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" src="http://ptres.37wan.com/js/jquery1.8.3.js"></script>
+    <script type="text/javascript">
+        var a = [ 1, 2, 3, 4 ];
+        var b = [ 3, 4, 5, 6 ];
+        var c = $.grep( a, function( item, index ) {
+            console.log( item );
+            return item > 2;
+        });
+        console.log( a );
+        console.log( c );
+    </script>
+</body>
+</html>
