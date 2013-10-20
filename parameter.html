@@ -5,12 +5,13 @@
     <title>全局变量和函数参数重名</title>
 </head>
 <body>
+    <div class="class" id="id" data-tag="222"></div>
     <script type="text/javascript">
         var name;
         function setName( name ) {
             name = name;
         }
-
+        
         setName( "1" );
         console.log( name );
     </script>

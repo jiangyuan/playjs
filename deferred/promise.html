@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    /* 
+     * 在原来的deferred对象上返回另一个deferred对象，
+     * 后者只开放与改变执行状态无关的方法（比如done()方法和fail()方法），
+     * 屏蔽与改变执行状态有关的方法（比如resolve()方法和reject()方法），从而使得执行状态不能被改变。
+     */
+
+    
+    var wait = function() {
+        var d = $.Deferred();
+
+        setTimeout( function() {
+            d.resolve();
+        }, 3000 );
+
+        return d.promise();
+    };
+
+    // wait().resolve(); 这里不能改变状态
+    // 如果能妥善的模拟模拟块级作用域， promise 的作用不是很大。
+    wait().done(function() {
+        console.log( "2" );
+    });
+    </script>
+</body>
+</html>

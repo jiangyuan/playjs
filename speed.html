@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> speed </title>
+</head>
+<body>
+    <div id="id"></div>
+
+    <script type="text/javascript">
+        var t = (new Date).getTime(),
+            a = [];
+            
+        for ( var i = 0; i < 100000; i++ ) {
+            a.push( i );
+        }
+
+        document.getElementById( "id" ).innerHTML = (new Date()).getTime() - t;
+    </script>
+</body>
+</html>

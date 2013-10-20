@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    // when 的触发顺序以及其参数顺序
+
+    var main = {
+        one: function() {
+            var d = $.Deferred();
+            setTimeout(function() {
+                console.log( "2" );
+                d.resolve( "22" );
+            }, 1000 );
+
+            return d;
+        },
+        two: function() {
+            var d = $.Deferred();
+            setTimeout(function() {
+                console.log( "1" );
+                d.resolve( "11" );
+            }, 500 );
+            return d;
+        }
+    };
+
+    $.when( main.one(), main.two() ).done(function( a, b ) {
+        console.log( a );
+        console.log( b );
+    });
+    
+    </script>
+</body>
+</html>

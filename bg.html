@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> background </title>
+</head>
+<body>
+    <div id="div" style="height:200px;background:url(images/1.jpg) no-repeat center bottom;"></div>
+    <script type="text/javascript" src="http://ptres.37wan.com/js/jquery1.8.3.js"></script>
+    <script type="text/javascript">
+        $( window ).on( "scroll", function() {
+            $( "div" ).height( $("div").height() + 20 );
+        });
+
+
+        var main = {
+            byId: function( id ) {
+                return document.getElementById( id );
+            }
+        };
+        console.log( main.byId("div") );
+    </script>
+</body>
+</html>
