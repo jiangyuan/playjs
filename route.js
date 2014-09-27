@@ -17,7 +17,7 @@ exports.parse = function( url ) {
         return parseBuffer( "." + url );
     }
 
-}
+};
 
 function parseContent( url ) {
     if ( fs.existsSync(url) ) {

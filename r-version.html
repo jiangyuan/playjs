@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    var l = '<link rel="stylesheet" href="{{$_img1_url}}www/css/base.css{{*@VERSION@*}}t=20131104{{*@VERSION@*}}" />';
+    console.log( l.replace(/(\{\{\*@VERSION@\*\}\}t=)20131104(\{\{\*@VERSION@\*\}\})/, "$1" + "20" + "$2") );
+    //console.log( l.replace(/\{\{\*@VERSION@\*\}\}/g, "20") );
+    </script>
+</body>
+</html>

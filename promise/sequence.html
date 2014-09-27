@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>并行和串行</title>
+</head>
+<body>
+    <script src="util.js"></script>
+    <script>
+    // 串行
+    /*getJSON('data/story.json')
+        .then(function(story) {
+            toBody(story.heading);
+
+            var sequence = Promise.resolve();
+            story.chapterUrls.forEach(function(url) {
+                sequence = sequence.then(function() {
+                    return getJSON('data/' + url);
+                }).then(function(chapter) {
+                    toBody(chapter.html);
+                });
+            });
+
+            return sequence;
+        }).catch(function(error) {
+            console.error(error);
+        }).then(function() {
+            toBody("All Done!")
+        });*/
+
+    // 并行
+    getJSON('data/story.json')
+        .then(function(story) {
+            toBody(story.heading);
+
+            return Promise.all(
+                story.chapterUrls.map(function(url) {
+                    return getJSON('data/' + url);
+                })
+            );
+        })
+        .then(function(data) {
+            data.forEach(function(chapter) {
+                toBody(chapter.html);
+            });
+        }).catch(function(error) {
+            console.error(error);
+        }).then(function() {
+            toBody("All Done!")
+        });
+    </script>
+</body>
+</html>

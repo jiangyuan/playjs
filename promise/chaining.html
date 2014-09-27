@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>链式</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 可以把这些“then”串联起来修改结果或者添加进行更多异步操作
+
+
+
+    function get(url) {
+        return new Promise(function(resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    resolve(xhr.response);
+                } else {
+                    reject(Error(xhr.statusText));
+                }
+            };
+
+            xhr.onerror = function () {
+                reject(Error('Netword error!'));
+            };
+
+            xhr.open('GET', url);
+            xhr.send();
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+
+    // 链式调用中的值处理
+    function getJSON(url) {
+        // 修改值
+        return get(url).then(JSON.parse);
+    }
+
+
+    getJSON('data/story.json').then(function(response) {
+        console.log(response);
+    });
+
+
+
+
+    // 队列异步操作
+    // 'then' 回调函数返回
+    //      如果是一个值，会被传给下一个 'then' 的回调，比如上面的 getJSON
+    //      如果返回一个'类 Promise'对象，下一个 then 就会等待这个 Promise 明确结束才会执行
+
+    getJSON('data/story.json').then(function(story) {
+        return getJSON(story.chapterUrls[0]);
+    }).then(function(chapter1) {
+        console.log(chapter1);
+    });
+    </script>
+</body>
+</html>

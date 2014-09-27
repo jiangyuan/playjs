@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>原型中的属性是不是共享的？</title>
+</head>
+<body>
+    <script type="text/javascript">
+    function P( title ) {
+        this.title = title;     // 这个才是实例的
+    }
+    P.prototype.n = "44";       // 这个属性却是
+    P.prototype.name = {    // 这个确实是共享的
+        a: "22"
+    };
+    P.prototype.arr = [ "aa", "bb" ];
+
+    P.prototype.setArr = function( o ) {
+        this.arr[0] = o;
+    };
+
+    var p1 = new P({
+        t: "55"
+    });
+    var p2 = new P({
+        t: "55"
+    });
+    
+
+    /*
+        猜想：
+        实例化的时候——
+        ) 构造函数中的普通类型和引用类型都会深度复制一份
+        ) 原型中的引用类型会被引用
+        ) 原型中的普通类型也会复制一份
+     */
+
+
+
+    console.log( p1.n );
+    console.log( p2.n );
+    p1.n = "66";
+    console.log( p1.n );
+    console.log( p2.n );
+
+
+    console.log( p1.arr );
+    console.log( p2.arr );
+    p1.arr[0] = "cc";
+    console.log( p1.arr );
+    console.log( p2.arr );
+    p1.setArr( "dd" );
+    console.log( p1.arr );
+    console.log( p2.arr );
+    
+
+
+    console.log( p1.name );
+    console.log( p2.name );
+    p1.name.a = "33";
+    console.log( p1.name );
+    console.log( p2.name );
+
+
+
+    console.log( p1.title );
+    console.log( p2.title );
+    p1.title.t = "33";
+    console.log( p1.title );
+    console.log( p2.title );
+    </script>
+</body>
+</html>

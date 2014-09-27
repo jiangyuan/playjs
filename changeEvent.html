@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    var timer;
+    $( "input" ).on( "keyup", function( e ) {
+        clearTimeout( timer );
+        var that = this;
+        timer = setTimeout(function() {
+            console.log( that.value );
+        }, 400 );
+    });
+    </script>
+</body>
+</html>

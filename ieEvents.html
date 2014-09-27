@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> events </title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script type="text/javascript">
+    var Events = {
+        on: function( elem, type, handle ) {
+            var temp = function() {
+                return function() {
+                    handle.call( elem );
+                };
+            }
+            elem.attachEvent( "on" + type, temp() );
+        }
+    };
+
+
+    Events.on( document.getElementById("btn"), "click", function() {
+        console.log( this );
+    });
+
+    </script>
+</body>
+</html>

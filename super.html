@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> super 语法糖 </title>
+</head>
+<body>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript">
+
+
+
+
+
+    function inherit( S, B ) {
+        var f = function() {};
+
+        f.prototype = S.prototype;
+        S.prototype = new f();
+        S.prototype.constructor = S;
+    }
+
+
+
+    function Base( name ) {
+        this.name = name;
+    }
+
+    Base.prototype.getName = function() {
+        return this.name;
+    };
+
+    Base.prototype.log = function( msg ) {
+        console.log( msg );
+    };
+
+
+    function Sub( name, age ) {
+        Base.apply( this, arguments );
+        this.age = age;
+    }
+
+    Sub.prototype.log = function( msg ) {
+        console.log( msg );
+    };
+    
+
+    inherit( Sub, Base );
+
+    
+
+    Sub.prototype.getAge = function() {
+        return this.age;
+    }
+
+
+
+
+    var sub1 = new Sub( "jerry", 18 );
+
+    sub1.log( "1" );
+    //sub1.log( "2" );
+
+
+    </script>
+</body>
+</html>

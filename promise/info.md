@@ -1,0 +1,1 @@
+* http://www.html5rocks.com/zh/tutorials/es6/promises/

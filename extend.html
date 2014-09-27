@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> extend </title>
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.14.0.css"> -->
+
+</head>
+<body>
+    <!-- <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="http://code.jquery.com/qunit/qunit-1.14.0.js"></script> -->
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript">
+
+
+    var ret = extend( true, {a: 1}, {b: 1}, {c: 1}, {
+        d: function() {
+            console.log( "2" );
+        }
+    }, {
+        a: undefined
+    }, {
+        c: null
+    }, {
+        e: {
+            f: [ 1, 2, 3 ]
+        }
+    }, {
+        e: {
+            g: [ 3, 2, 1 ]
+        }
+    } );
+    console.log( ret );
+
+    /*QUnit.test( "hello test", function( assert ) {
+        assert.ok( 1 == "1", "Passed!" );
+    });*/
+    </script>
+</body>
+</html>

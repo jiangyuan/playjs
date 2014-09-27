@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>错误处理</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // Promise 的否定回调可以由 Promise.reject() 触发，也可以由构造器回调中抛出的错误触发
+    var p = new Promise(function(resovle, reject) {
+        // 如果数据格式不对的话 JSON.parse 会抛出错误
+        // 可以作为隐性的否定结果：
+        resovle(JSON.parse("This ain't json"));
+    });
+
+    p.then(function(data) {
+        console.log('It worked!', data);
+    }).catch(function(data) {
+        console.log('It failed!', data);
+    });
+
+
+    // 否定回调同样可以由成功回调抛出错误触发
+    var p1 = new Promise(function(resovle, reject) {
+        resovle("This ain't json");
+    });
+
+    p1.then(function(data) {
+        JSON.parse(data);
+        console.log('It worked!', data);
+    }).catch(function(data) {
+        console.log('It failed!', data);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title> e.currentTarget </title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+  <div>
+    <p><span>inspan</span>outspan</p>
+  </div>
+
+  <script type="text/javascript">
+    $( document ).on( "click", "p", function( e ) {
+      console.log( this );
+      console.log( e.target );
+      console.log( e.currentTarget );
+    })
+  </script>
+</body>
+</html>

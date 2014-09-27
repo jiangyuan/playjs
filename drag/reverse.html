@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> 第二题 li 创建， 并记录 pv </title>
+</head>
+<body>
+    <ul id="test"></ul>
+
+
+    <script type="text/javascript">
+    var tempLi,
+        i = 0,
+        l = 100,
+        data = [],
+        fragment = document.createDocumentFragment(),
+        ul = document.getElementById( "test" ),
+        cache = [];
+
+    // 利用 fragment 创建节点
+    for ( ; i < l; i++ ) {
+        tempLi = document.createElement( "li" );
+        tempLi.innerHTML = i;
+        fragment.appendChild( tempLi );
+        cache.push( tempLi );
+    }
+
+    ul.appendChild( fragment );
+
+    // 倒计时一秒
+    setTimeout(function() {
+        cache = cache.reverse();
+        for ( var j = 0, len = cache.length; j < l; j++ ) {
+            fragment.appendChild( cache[j] );
+        }
+        ul.innerHTML = "";
+        ul.appendChild( fragment );
+        fragment = null;
+    }, 1000 );
+
+
+    // 统计 pv
+    (function() {
+        var current;
+
+        if ( localStorage ) {
+            current = localStorage.getItem( "pv" );
+            if ( !current ) {
+                current = 0;
+            }
+
+            current = +current; // 转换为数字
+
+            localStorage.setItem( "pv", current + 1 );
+        }
+    })();
+    </script>
+</body>
+</html>

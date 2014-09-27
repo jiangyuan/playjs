@@ -19,6 +19,19 @@
             return count++;
         });
         console.log( b );
+
+
+        var temp2 = "jerry is a {s} {s}",
+            target = [ "handsome", "man" ],
+            c = 0;
+
+        var r = temp2.replace( /\{s\}/g, function() {
+            console.log( arguments );
+            console.log( this );
+            return target[c++];
+        });
+        console.log( r );
+
     </script>
 </body>
 </html>

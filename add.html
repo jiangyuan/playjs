@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> add </title>
+</head>
+<body>
+    <script type="text/javascript">
+    var len, tempA, tempB, temp,
+        i = 0,
+        a = "99",
+        b = "22",
+        //pos = [ 0 ],
+        result = [];
+
+    //result.leng
+
+
+    a = a.split( "" ).reverse();
+    b = b.split( "" ).reverse();
+
+    len = Math.max( a.length, b.length );
+
+    for ( ; i < len; i++ ) {
+        tempA = +a[i] || 0;
+        tempB = +b[i] || 0;
+        temp = tempA + tempB + ( result[i] || 0 );
+        console.log( temp );
+
+        if ( temp >= 10 ) {
+            temp = temp - 10;
+            result[ i + 1 ] = 1; // 
+        }
+
+
+        //result.push( temp );
+        result[ i ] = temp;
+    }
+
+    console.log( result );
+
+    console.log( result.reverse().join("") );
+    </script>
+</body>
+</html>

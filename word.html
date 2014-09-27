@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> word </title>
+</head>
+<body>
+    <script type="text/javascript">
+    var l, temp,
+        max = {
+            key: "",
+            value: 0
+        },
+        maxArray = [],
+        i = 0,
+        msg = "If you haven't used Grunt before, be sure to check out the Getting Started guide, as it explains how to create a Gruntfile as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:",
+        count = {};
+
+    //msg = msg.split( " " );
+    console.log( msg );
+    l = msg.length;
+
+    for ( ; i < l; i++ ) {
+        temp = msg.charAt( i );
+        if ( !count[temp] ) {
+            count[ temp ] = 1;
+        }
+        count[ temp ] += 1;
+    }
+
+
+    for ( var j in count ) {
+        if ( /[a-zA-Z]/.test( j ) && count[j] >= max.value ) {
+            max.value = count[ j ];
+            max.key = j;
+        }
+    }
+
+    maxArray.push( max );
+
+
+    /*for ( var m in count ) {
+        if (  )
+    }*/
+
+    console.log( max );
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> chrome devtools call stacks</title>
+</head>
+<body>
+    <script type="text/javascript">
+    function a() {
+        setTimeout( b, 1000 );
+    }
+    function b() {
+        console.log( "trigger" );
+    }
+    a();
+    </script>
+</body>
+</html>

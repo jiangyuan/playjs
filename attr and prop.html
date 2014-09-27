@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <span data-title="hh" title="aa">哈哈</span>
+    <input type="checkbox" checked />
+    <input type="text" value="2222" />
+  </div>
+
+  <script type="text/javascript">
+    var div = document.querySelector( "div" ),
+      span = document.querySelector( "span" ),
+      check = document.querySelector( "input[type=checkbox]" ),
+      text = document.querySelector( "input[type=text]" ),
+      log = function(o) {console.log(o);};
+
+
+    /* span */
+    log( span.title );
+    log( span.getAttribute("title") );  // just no 
+    span.title = "bala";
+    log( span.title );
+    log( span.getAttribute("title") );  // just no difference
+    span["data-title"] = "dd";
+
+    log( span["data-title"] );
+    log( span.getAttribute("data-title") );
+    log( span.setAttribute("data-title", "ff") );
+    log( span.getAttribute("data-title") );
+    log( span["data-title"] );
+
+    span.setAttribute("data-custom", "ff")
+    log( div.innerHTML );
+
+
+
+
+    log( check.checked );
+    log( "|" + check.getAttribute("checked") + "|" );
+
+  </script>
+</body>
+</html>

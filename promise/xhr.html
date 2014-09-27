@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> xhr </title>
+</head>
+<body>
+    <script type="text/javascript">
+    function get(url) {
+        return new Promise(function(resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    resolve(xhr.response);
+                } else {
+                    reject(Error(xhr.statusText));
+                }
+            };
+
+            xhr.onerror = function () {
+                reject(Error('Netword error!'));
+            };
+
+            xhr.open('GET', url);
+            xhr.send();
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+
+    get('data/story.json').then(function(respones) {
+        console.log(respones);
+    });
+
+
+    </script>
+</body>
+</html>

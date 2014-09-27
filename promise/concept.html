@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> 概念 </title>
+</head>
+<body>
+    <script type="text/javascript">
+    var p = new Promise(function(resovle, reject) {
+        var random = Math.random();
+        if (random < 0.5) {
+            resovle(random);
+        } else {
+            reject(random);
+        }
+    });
+    
+
+    p.then(function(num) {
+        console.log(num)
+    }, function(num) {
+        console.error(num);
+    });
+    </script>
+</body>
+</html>

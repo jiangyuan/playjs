@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> events </title>
+</head>
+<body>
+    <script type="text/javascript" src="js/events.js"></script>
+    <script type="text/javascript">
+        var E = new Events();
+        E.on( "a", function() {
+            console.log( "2" );
+        });
+        E.trigger( "a" );
+    </script>
+</body>
+</html>

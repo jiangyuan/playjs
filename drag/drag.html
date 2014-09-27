@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title> drag & drop </title>
+    <style type="text/css">
+    html, body, div {
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    .drag {
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+        position: absolute;
+    }
+
+    .drop {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 700px;
+        top: 100px;
+        border: 1px solid #000;
+    }
+    </style>
+</head>
+<body>
+    <div id="drag" class="drag" title="按住拖动"></div>
+    <div id="drop" class="drop"></div>
+
+    <script type="text/javascript">
+
+    var Events = {
+            on: function( elem, type, handle ) {
+                if ( document.addEventListener ) {
+                    elem.addEventListener( type, handle, false );
+                } else {
+                    elem.attachEvent( "on" + type, handle );
+                }
+            },
+
+            getEvent: function( e ) {
+                return e || window.event;
+            },
+
+            getTarget: function( e ) {
+                return e.target || e.srcElement;
+            },
+
+            getMousePosition: function( e ) {
+                return {
+                    top: e.pageY || e.clientY,
+                    left: e.pageX || e.clientX
+                }
+            }
+        },
+
+
+
+        doc = document,
+        drag = doc.getElementById( "drag" ),
+        drop = doc.getElementById( "drop" ),
+
+        dragWidth = 100,
+        dragHeight = 100,
+
+        refreshPostion = function( elem, pos ) {
+            var t = pos.top,
+                l = pos.left;
+
+            elem.style.left = Math.abs( dragWidth - l ) + "px";
+            elem.style.top = Math.abs( dragHeight - t ) + "px";
+        },
+
+        //isMouseDown = false,
+
+        dragDrop = {
+            isMouseDown: false,
+            eventObj: null,
+
+            drag: function( elem ) {
+                var that = this;
+
+                Events.on( doc, "mousedown", function( event ) {
+                    var e = Events.getEvent( event ),
+                        target = Events.getTarget( event );
+
+                    if ( elem === target ) {
+                        that.isMouseDown = true;
+                        that.eventObj = e;
+                    }
+                });
+
+                Events.on( doc, "mousemove", function( event ) {
+                    var e = Events.getEvent( event ),
+                        position = Events.getMousePosition( e );
+
+                    if ( that.isMouseDown ) {
+                        refreshPostion( elem, position );
+                        that.eventObj = e;
+                    }
+                });
+
+                Events.on( doc, "mouseup", function() {
+                    dragDrop.drop( drag, drop );
+                    that.isMouseDown = false;
+                    that.eventObj = null;
+
+                });
+            },
+
+            getPosAndSize: function( elem ) {
+                var getComputedStyle = function() {
+                    if ( window.getComputedStyle ) {
+                        return window.getComputedStyle( elem );
+                    } else {
+                        return elem.currentStyle;
+                    }
+                },
+
+                style = getComputedStyle( elem );
+
+                return {
+                    top: parseInt( style.top, 10 ),
+                    left: parseInt( style.left, 10 ),
+                    width: parseInt( style.width, 10 ),
+                    height: parseInt( style.height, 10 )
+                };
+            },
+
+            checkDrop: function( s, t ) {
+                var v, h, mousePositon;
+
+                if ( !this.eventObj ) {
+                    return;
+                }
+
+
+                mousePositon = Events.getMousePosition( this.eventObj );
+                v = t.left + ( t.width - s.width );
+                h = t.top + ( t.height - s.height );
+
+                return mousePositon.top >= t.top && mousePositon.top <= h &&
+                        mousePositon.left >= t.left && mousePositon.left <= v;
+            },
+
+            drop: function( source, target ) {
+                var targetInfo = this.getPosAndSize( target ),
+                    sourceInfo = this.getPosAndSize( source );
+
+                if ( this.checkDrop(sourceInfo, targetInfo) ) {
+                    target.innerHTML = "DROP";
+                }
+            }
+        };
+
+
+    dragDrop.drag( drag );
+    </script>
+</body>
+</html>
