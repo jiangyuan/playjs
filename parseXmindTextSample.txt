@@ -1,0 +1,23 @@
+基础建设
+	【效率工具】Anna 三期计划
+		@cover
+	【项目治理】梳理项目全景图
+		@cover @moon
+	【环境治理&Node】H5 nohost 环境直出部署
+		@cover
+	TSW 监控 IMServer
+		@mox
+	运营活动脚手架
+		@ciccy
+	【Node】 H5 React 直出性能优化
+		分析瓶颈
+			输出报告
+		暂定 qps 500
+		@cover @mox @eraser
+	RN
+		升级到 0.57
+			@jack
+		离线包实时更新
+			@jack
+	【效率工具】Sas 的 CI 尝试
+		@shiji
