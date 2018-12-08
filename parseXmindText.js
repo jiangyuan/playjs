@@ -77,4 +77,48 @@ function parse(source) {
   return ret
 }
 
-parse(sample)
+let data = {
+  type: 'project',
+  attributes: {
+    title: '十二月计划',
+    items: []
+  }
+}
+const items = data.attributes.items
+const originData = parse(sample)
+Object.keys(originData).forEach(item => {
+  const meta = {}
+
+  if (!originData[item].list.length) {
+    meta.type = 'to-do'
+    console.log('33333', item)
+    meta.attributes = {
+      title: (item + ' ' + originData[item].owner.join(' ')).replace('&', '与')
+    }
+    items.push(meta)
+  } else {
+    meta.type = 'to-do'
+    meta.attributes = {
+      title: (item + ' ' + originData[item].owner.join(' ')).replace('&', '与')
+    }
+    const checkList = []
+    originData[item].list.forEach(listItem => {
+      checkList.push({
+        type: 'checklist-item',
+        attributes: {
+          title: listItem
+        }
+      })
+    })
+    meta.attributes['checklist-items'] = checkList
+    items.push(meta)
+  }
+})
+
+// console.log(data.attributes.items)
+
+data = [data];
+console.log('22', data)
+// console.log(JSON.stringify(data))
+const open = require('open')
+open('things:///json?data=' + JSON.stringify(data))
